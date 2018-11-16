@@ -60,14 +60,13 @@ class USBList(object):
     Return these names in a set.
     '''
     devices = set()
-    with os.scandir(dirname) as it:
-      for entry in it:
-        if entry.is_dir() and not entry.is_symlink():
-          devices |= self._find_devices(os.path.join(dirname, entry.name))
-        if re.search('tty.*[0-9]', entry.name):
-          devices.add(entry.name)
-        if re.search('hidraw[0-9]', entry.name):
-          devices.add(entry.name)
+    for entry in os.scandir(dirname):
+      if entry.is_dir() and not entry.is_symlink():
+        devices |= self._find_devices(os.path.join(dirname, entry.name))
+      if re.search('tty.*[0-9]', entry.name):
+        devices.add(entry.name)
+      if re.search('hidraw[0-9]', entry.name):
+        devices.add(entry.name)
     return devices
 
   def _get_usb_device(self, dirname):
@@ -96,13 +95,12 @@ class USBList(object):
     USB devices on a system. Return these as a dictionary indexed by the path.
     '''
     info = dict()
-    with os.scandir(Temper.SYSPATH) as it:
-      for entry in it:
-        if entry.is_dir():
-          path = os.path.join(Temper.SYSPATH, entry.name)
-          device = self._get_usb_device(path)
-          if device is not None:
-            info[path] = device
+    for entry in os.scandir(Temper.SYSPATH):
+      if entry.is_dir():
+        path = os.path.join(Temper.SYSPATH, entry.name)
+        device = self._get_usb_device(path)
+        if device is not None:
+          info[path] = device
     return info
 
 class USBRead(object):
