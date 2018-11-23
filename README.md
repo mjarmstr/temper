@@ -1,9 +1,14 @@
 # temper.py
 
-The USB temperature and temperature/humidity sensors sold my PCsensor are
-widely available from the parent site
-(http://pcsensor.com/usb-temperature-humidity.html), from Amazon, and from
-EBay.
+The USB temperature and temperature/humidity sensors sold by PCsensor are widely available from the parent site:   (http://pcsensor.com/usb-temperature-humidity.html).  
+
+Specific versions are available from ModMyPi:
+
+TEMPer Gold (https://www.modmypi.com/temper-gold-original-usb-temperature-sensor)  
+TEMPer2 (https://www.modmypi.com/temper2-usb-dual-temperature-sensor)  
+TEMPerHUM (https://www.modmypi.com/temperhum-usb-temperature-and-humidity-sensor)  
+
+The purpose of this fork is to specifically assist users wanting to use these sensors with the Raspberry Pi.
 
 ## Design
 
